@@ -24,3 +24,136 @@ main {
 .grid-item:nth-of-type(11) {
     grid-column-start: 2;
 }
+
+/******************
+*  TRANSFORMS  *
+******************/
+
+main div:nth-child(2){
+    transform: translateX(425px);
+    /*****
+    Translate; X is horizontal; - value moves left, + value moves right
+    Translate; Y is vertical; - value moves up, + value moves down
+    Translate; Z is 3D (depth); - value moves away( make smaller), + value moves closer (make larger)
+    *****/
+}
+
+main div:nth-child(3){
+    transform: rotate(30deg);
+    /*****
+    360 degrees is a full rotation
+    180 degrees is a half rotation
+    90 degrees is a quarter rotation
+    Rotate; X is horizontal; - value rotates down, + value rotates up
+    Rotate; Y is vertical; - value rotates left, + value rotates right
+    Rotate; Z is 2D (depth); - value rotates counter-clockwise, + value rotates clockwise
+    *****/
+}
+
+main div:nth-child(4){
+    transform: scale(2, 0.5);
+    /*****
+    Scale(2, 0.5) will make the object twice as wide and half as tall
+    Scale; X is horizontal; - value shrinks, + value grows
+    Scale; Y is vertical; - value shrinks, + value grows
+    Scale; Z is 3D (depth); - value shrinks, + value grows
+    *****/
+}
+
+main div:nth-child(5){
+    transform: skew(-40deg, 20deg);
+    /*****
+    Skew; X is horizontal; - value skews left, + value skews right
+    Skew; Y is vertical; - value skews up, + value skews down
+    *****/
+}
+
+main div:nth-child(7){
+
+transition-property: background-color;
+/*****transition property tells the browser which property to animate. 
+    You can use multiple properties, but you must separate them with a comma. 
+    You can also use "all" to animate all properties. *****/
+transition-duration: 1s;
+/*****transition duration tells the browser how long to animate the property. 
+    You can use seconds (s) or milliseconds (ms). *****/    
+}
+
+main div:nth-child(7):hover{
+    background-color: lightcoral;
+
+}
+
+main div:nth-child(8){
+    transition-property: transform;
+    transition-duration: 1500ms; /*1500 milliseconds = 1.5 seconds*/
+}
+main div:nth-child(8):hover{
+    transform: rotate(360deg);
+}
+main div:nth-child(9):hover{
+    /*****transition: all to do any property that changes
+    transition is shorthand that includes property, duration, and any other transition value/*****/
+    transition-property: all;
+    transition-duration: 2s;
+    font-size: 20px;
+    background-color: yellow;
+    text-color: purple;
+    scale(1.5,1.5);
+}
+    /****************
+    *  KEYFRAMES  *
+    has two parts: 1) the keyframes and 2) the animation property
+    1) the  instruction using @keyframes tells the browser what to do at each step of the animation
+    2) the animation property tells the browser which keyframes to use and how to animate
+    ****************/
+    @keyframes bounce{
+        /*inside the keyframes, you set instructions for how the animation will run,
+        or what should happen at each keyframe.
+        ...if you dont enter a value for a keyframe )5 or 100% the animation will use whatever style
+         the element has*/
+         
+        7%{
+            transform: scaleY(0.9) translateY(0px);
+            transform-origin:bottom; /*so the scale happens from the bottom not the center*/
+        }
+
+        10%{
+            transform: scaleY(1);
+            transform-origin:bottom; /*so the scale happens from the bottom not the center*/
+
+         50%{
+            transform: translateY(-50px);
+         }
+        }
+    }
+    main div:nth-child(10){
+
+        animation-name: bounce;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+    
+    }
+
+
+    /****************
+    * BTN ANIMATION *
+    ****************/
+    .btn{
+        text-align:center;
+        border-radius:5px;
+        background-color:hsl(174, 58%, 68%);
+        border:2px solid hsl(174, 27%, 36%);
+        color:indigo;
+        padding:2px;
+        cursor:pointer;
+
+        /***** transition so any change animates*****/
+        transition: all 800ms ease;
+    }
+
+    .btn:hover, .btn:focus, .btn:active{
+        background-color:hsl(174, 100%, 84%);
+        border: 2px solid  hsl(174, 27%, 36%);
+        transform: scale(1.1);
+    }
