@@ -1,0 +1,26 @@
+main {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    gap: 10px;
+}
+
+.grid-item {
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.square {
+    width: 80px;
+    height: 80px;
+    background-color: lightblue;
+}
+
+.bar {
+    width: 80px;
+    height: 25px;
+    background-color: lightgreen;
+}
+
+.grid-item:nth-of-type(11) {
+    grid-column-start: 2;
+}
